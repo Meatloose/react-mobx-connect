@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "outDir": ".build/src",
+    "inlineSourceMap": true,
+    "noImplicitAny": false,
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "module": "commonjs",
+    "target": "es2015",
+    "baseUrl": ".",
+    "jsx": "react"
+  }
+}

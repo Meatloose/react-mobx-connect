@@ -1,9 +1,10 @@
 import * as React from 'react';
 import connect from '../src';
 import Children from './Children';
+import ToogleStore from './store';
 
 class Parent extends React.Component<any, any> {
-  render() {
+  public render() {
     const { title, toogle } = this.props;
     const text = ({
       0: 'close',

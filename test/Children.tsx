@@ -1,5 +1,6 @@
 import * as React from 'react';
 import connect from '../src';
+
 class Children extends React.Component<any, any> {
   public render() {
     const { toogle, handleToggle } = this.props;

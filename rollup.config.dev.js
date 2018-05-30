@@ -73,7 +73,7 @@ export default {
     {
       file: 'lib/index.js',
       format: 'iife',
-      name: 'trs',
+      name: 'connect',
       sourceMap: 'inline',
       globals: {
         'react': 'React',

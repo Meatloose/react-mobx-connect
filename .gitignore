@@ -1,5 +1,6 @@
 __test__/
 dist/
+lib/
 .vscode/
 test-results.xml
 

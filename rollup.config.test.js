@@ -66,7 +66,6 @@ export default {
       file: '__test__/index.js',
       useStrict: false,
       format: 'cjs',
-      name: 'trs',
       sourceMap: 'inline',
       globals: {
         'react': 'React',

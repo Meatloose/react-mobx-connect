@@ -55,7 +55,6 @@ export default {
   output: [{
     file: 'lib/index.cjs.js',
     format: 'cjs',
-    name: 'trs',
     sourceMap: 'inline',
     globals: {
       'react': 'React',
@@ -64,7 +63,7 @@ export default {
   }, {
     file: 'lib/index.js',
     format: 'umd',
-    name: 'trs',
+    name: 'connect',
     sourceMap: 'inline',
     globals: {
       'react': 'React',
@@ -73,7 +72,6 @@ export default {
   }, {
     file: 'lib/index.es.js',
     format: 'es',
-    name: 'trs',
     sourceMap: 'inline',
     globals: {
       'react': 'React',

@@ -63,7 +63,7 @@ export default {
   output: [
     // for development browser build for script tag includes
     {
-      file: '.build/test/index.js',
+      file: '__test__/index.js',
       useStrict: false,
       format: 'cjs',
       name: 'trs',

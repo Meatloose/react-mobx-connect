@@ -1,4 +1,4 @@
-.build/
+__test__/
 dist/
 .vscode/
 test-results.xml

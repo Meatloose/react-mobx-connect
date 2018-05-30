@@ -66,12 +66,12 @@ export default {
       host: 'localhost',
       port: 8980
     }),
-    livereload('dist')
+    livereload('lib')
   ],
   output: [
     // for development browser build for script tag includes
     {
-      file: 'dist/index.js',
+      file: 'lib/index.js',
       format: 'iife',
       name: 'trs',
       sourceMap: 'inline',

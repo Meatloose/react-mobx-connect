@@ -50,16 +50,10 @@ export default {
     }),
     localResolve(),
     // for using non-ES6 third party modules
-    commonjs({
-      // include: 'node_modules/**',
-      // namedExports: {
-      //   'node_modules/react/index.js': ['createElement', 'Component', 'PureComponent', 'Children'],
-      //   'node_modules/react-dom/index.js': ['findDOMNode', 'unstable_batchedUpdates'],
-      // }
-    }),
+    commonjs({}),
   ],
   output: [{
-    file: 'dist/index.cjs.js',
+    file: 'lib/index.cjs.js',
     format: 'cjs',
     name: 'trs',
     sourceMap: 'inline',
@@ -68,7 +62,7 @@ export default {
       'mobx-react': 'mobxReact',
     },
   }, {
-    file: 'dist/index.js',
+    file: 'lib/index.js',
     format: 'umd',
     name: 'trs',
     sourceMap: 'inline',
@@ -77,7 +71,7 @@ export default {
       'mobx-react': 'mobxReact',
     },
   }, {
-    file: 'dist/index.es.js',
+    file: 'lib/index.es.js',
     format: 'es',
     name: 'trs',
     sourceMap: 'inline',

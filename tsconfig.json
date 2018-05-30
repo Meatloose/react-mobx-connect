@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "outDir": ".build/src",
     "inlineSourceMap": true,
     "noImplicitAny": false,
     "allowSyntheticDefaultImports": true,

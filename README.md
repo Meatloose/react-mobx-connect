@@ -1,35 +1,62 @@
-# Rollup.js + Typescript Template
+# React connector to MobX
 
-[![Build status](https://ci.appveyor.com/api/projects/status/lggcm64oeycjut75?svg=true)](https://ci.appveyor.com/project/psastras/typescript-rollup-skeleton)
+This simple HOC easily connects MobX to React components. 
+You do not need to use `@inject` & `@observer` in every `Class | ClassicComponentClass | StatelessComponent` components.
 
-Template project for developing and bundling a Typescript library with Rollup.js.
+## Usage
 
-Supports inlining css and images, and a development mode with hot reloading.
+* install
 
-This project uses Yarn for dependency management, however it is also NPM compatible, just replace
-all commands with `yarn` to `npm` if you would rather not use Yarn.
-
-## Development
-
-The template includes a development mode which watches and serves the library via the `index.html`
-page.  Changes to the library and tests are automatically transpiled, run and hot-reloaded into the
- browser. To enable development mode, run the following command:
-
-```shell
-yarn run watch
+```bash
+npm install mobx-react-connect
 ```
 
-Then navigate a browser to `http://localhost:8080`.  Source maps are included inline for debugging.
+* import the connect module
 
-## Bundling for Production
+```jsx
+// Toogle.js
+import connect from 'mobx-react-connect';
 
-The default configuration in `rollup.config.prod.js` bundles three versions of the library, es6
-modules, umd modules, and commonjs modules.  The code is *not* minified, since projects importing
-the built library should be using their own minifiers.  To bundle the library for distribution,
-run:
+const Toogle = ({ toogle, handleToggle }) => (
+  <div>
+    <h1>toogle state: {({ 0: 'close', 1: 'open' })[toogle]}</h1>
+    <button onClick={handleToggle}>{({ 0: 'open', 1: 'close' })[toogle]}</button>
+  </div>
+);
 
-```shell
-yarn run build
+export default connect(
+  // inject stores as a string array
+  ['toogleStore'],
+  // map store to props
+  (stores) => ({
+    toogle: stores.toogleStore.toogle,
+    handleToggle: stores.toogleStore.handleToggle,
+  }),
+)(Toogle);
+
+// toggleStore.js
+import { observable, action } from 'mobx';
+
+class ToogleStore {
+  @observable toogle = 0;
+
+  @action.bound
+  handleToggle() {
+    this.toogle = +!this.toogle;
+  }
+}
+
+export default new ToogleStore();
+
+// setup App
+import { Provider } from 'mobx-react';
+import Toogle from './container/Toogle';
+import toogleStore from './store/toggleStore';
+
+ReactDOM.render(
+  <Provider {...{ toogleStore }}>
+    <Toogle />
+  </Provider>,
+  MOUNT_NODE,
+);
 ```
-
-Output is written to the `dist/` folder.

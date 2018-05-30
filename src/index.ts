@@ -1,3 +1,3 @@
-import connect from "./connect";
+import connect from './connect';
 
 export default connect;

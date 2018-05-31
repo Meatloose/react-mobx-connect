@@ -1,5 +1,5 @@
 {
-  "name": "@shark/mobx-react-connect",
+  "name": "mobx-react-connect",
   "version": "0.0.1",
   "description": "React connector to MobX",
   "main": "lib/index.js",

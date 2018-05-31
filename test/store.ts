@@ -1,12 +1,12 @@
 import { observable, action } from 'mobx';
 
-class ToogleStore {
-    @observable public toogle = 0;
+class ToggleStore {
+    @observable public toggle = 0;
 
     @action.bound
     public handleToggle() {
-        this.toogle = +!this.toogle;
+        this.toggle = +!this.toggle;
     }
 }
 
-export default new ToogleStore();
+export default new ToggleStore();

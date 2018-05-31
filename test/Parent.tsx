@@ -4,11 +4,11 @@ import Children from './Children';
 
 class Parent extends React.Component<any, any> {
   public render() {
-    const { title, toogle } = this.props;
+    const { title, toggle } = this.props;
     const text = ({
       0: 'close',
       1: 'open',
-    })[toogle];
+    })[toggle];
 
     return (
       <div>
@@ -20,8 +20,8 @@ class Parent extends React.Component<any, any> {
 }
 
 export default connect(
-  ['toogleStore'],
-  ({ toogleStore }) => ({
-    toogle: toogleStore.toogle,
+  ['toggleStore'],
+  ({ toggleStore }) => ({
+    toggle: toggleStore.toggle,
   }),
 )(Parent);

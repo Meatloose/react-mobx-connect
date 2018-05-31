@@ -1,7 +1,7 @@
 # React connector to MobX
 
 This simple HOC easily connects MobX to React components. 
-You do not need to use `@inject` & `@observer` in every `Class | ClassicComponentClass | StatelessComponent` components.
+You can `connect` MobX to every `ComponentClass | ClassicComponentClass | StatelessComponent` components without `@inject` & `@observer`.
 
 ## Usage
 
@@ -14,48 +14,55 @@ npm install mobx-react-connect
 * import the connect module
 
 ```jsx
-// Toogle.js
+// Toggle.jsx
 import connect from 'mobx-react-connect';
 
-const Toogle = ({ toogle, handleToggle }) => (
-  <div>
-    <h1>toogle state: {({ 0: 'close', 1: 'open' })[toogle]}</h1>
-    <button onClick={handleToggle}>{({ 0: 'open', 1: 'close' })[toogle]}</button>
-  </div>
-);
+// [ComponentClass | StatelessComponent | ClassicComponentClass]
+class Toggle extends React.Component {
+  render() {
+    const { toggle, handleToggle } = this.props;
+
+    return (
+      <div>
+        <h1>toggle state: {({ 0: 'close', 1: 'open' })[toggle]}</h1>
+        <button onClick={handleToggle}>{({ 0: 'open', 1: 'close' })[toggle]}</button>
+      </div>
+    );
+  }
+}
 
 export default connect(
   // inject stores as a string array
-  ['toogleStore'],
+  ['toggleStore'],
   // map store to props
   (stores) => ({
-    toogle: stores.toogleStore.toogle,
-    handleToggle: stores.toogleStore.handleToggle,
+    toggle: stores.toggleStore.toggle,
+    handleToggle: stores.toggleStore.handleToggle,
   }),
-)(Toogle);
+)(Toggle);
 
 // toggleStore.js
 import { observable, action } from 'mobx';
 
-class ToogleStore {
-  @observable toogle = 0;
+class ToggleStore {
+  @observable toggle = 0;
 
   @action.bound
   handleToggle() {
-    this.toogle = +!this.toogle;
+    this.toggle = +!this.toggle;
   }
 }
 
-export default new ToogleStore();
+export default new ToggleStore();
 
 // setup App
 import { Provider } from 'mobx-react';
-import Toogle from './container/Toogle';
-import toogleStore from './store/toggleStore';
+import Toggle from './container/Toggle';
+import toggleStore from './store/toggleStore';
 
 ReactDOM.render(
-  <Provider {...{ toogleStore }}>
-    <Toogle />
+  <Provider {...{ toggleStore }}>
+    <Toggle />
   </Provider>,
   MOUNT_NODE,
 );

@@ -3,11 +3,11 @@ import connect from '../src';
 
 class Children extends React.Component<any, any> {
   public render() {
-    const { toogle, handleToggle } = this.props;
+    const { toggle, handleToggle } = this.props;
     const text = ({
       0: 'open',
       1: 'close',
-    })[toogle];
+    })[toggle];
 
     return (
       <div>
@@ -18,9 +18,9 @@ class Children extends React.Component<any, any> {
 }
 
 export default connect(
-  ['toogleStore'],
-  ({ toogleStore }) => ({
-    handleToggle: toogleStore.handleToggle,
-    toogle: toogleStore.toogle,
+  ['toggleStore'],
+  ({ toggleStore }) => ({
+    handleToggle: toggleStore.handleToggle,
+    toggle: toggleStore.toggle,
   }),
 )(Children);

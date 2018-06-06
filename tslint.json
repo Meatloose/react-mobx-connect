@@ -1,7 +1,7 @@
 {
   "extends": ["tslint:recommended", "tslint-react"],
   "rules": {
-    "no-default-export": true,
+    "no-default-export": false,
     "only-arrow-functions": [ true ],
     "ordered-imports": [ false ],
     "quotemark": [ true, "single", "avoid-escape" ],

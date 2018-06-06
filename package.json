@@ -1,12 +1,12 @@
 {
-  "name": "mobx-react-connect",
+  "name": "react-mobx-connect",
   "version": "0.0.1",
   "description": "React connector to MobX",
   "main": "lib/index.js",
   "jsnext:main": "lib/index.es.js",
   "module": "lib/index.es.js",
   "browser": "lib/index.cjs.js",
-  "repository": "https://github.com/Meatloose/mobx-react-connect",
+  "repository": "https://github.com/Meatloose/react-mobx-connect",
   "author": "Meatloose <poiuy_1100@163.com>",
   "license": "MIT",
   "scripts": {
@@ -18,7 +18,9 @@
     "watch:src": "rollup --watch -c rollup.config.dev.js",
     "watch:mocha": " mocha --watch --require jsdom-global/register __test__",
     "watch:test": "rollup --watch -c rollup.config.test.js",
-    "pub": "npm run build && npm publish"
+    "pub": "npm run build && npm publish",
+    "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}'",
+    "lint:fix": "npm run lint -- --fix"
   },
   "files": [
     "lib",
